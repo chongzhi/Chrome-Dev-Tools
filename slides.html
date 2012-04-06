@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="slides.manifest">
+<head>
+<meta charset="UTF-8">
+<title>Slides</title>
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+    <button type="button" class="prev handle" id="prev">&lt;</button>
+    <div class="tips">F11进入全屏，[Enter,Space,&#8594;,&#8595;]翻下一页，[Esc,&#8592;,&#8593;]翻上一页</div>
+    <section class="slides" id="slides">
+
+        <!-- 
+            要添加ppt页面，只需复制article标签一份，
+            article内部可随意修改，包括样式标签等 
+        -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <img class="chrome" src="images/chrome.png" alt="">
+                <img class="chrome canary" src="images/canary.png" alt="">
+                <img class="chrome chromium" src="images/chromium.png" alt="">
+                <h1 class="headline">Chrome Developer Tools <br><!-- 奇技淫巧 -->c功能与技巧详解</h1>
+                <p style="margin-top:40px;">崇志：chongzhi.ldq@taobao.com</p>
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">chrome的几个版本</h2>
+                <ul>
+                    <li>chrome(Stable, dev, beta)
+                        <p><a target="_blank" href="http://www.chromium.org/getting-involved/dev-channel">http://www.chromium.org/getting-involved/dev-channel</a></p>
+                        <ul class="s-list">
+                            <li><span class="c-blue">stable</span>，稳定版，推荐追求稳定的普通用户使用，更新最慢。</li>
+                            <li><span class="c-blue">beta</span>，测试版，有一定新功能，但是可能会存在不稳定情况，适合喜欢尝鲜的朋友使用，更新速度一般。</li>
+                            <li><span class="c-blue">dev</span>，开发版，更新最快，新功能最多，但是可能非常不稳定，适合开发人员使用。</li>
+                        </ul>
+                    </li>
+
+                    <li>chrome canary (金丝雀版) 
+                    <p><a target="_blank" href="http://tools.google.com/dlpage/chromesxs">http://tools.google.com/dlpage/chromesxs</a></p></li>
+
+                    <li>chromium (chrome就是基于这个开源项目发展而来)
+                        <p><a target="_blank" href="http://www.chromium.org/getting-involved/download-chromium">http://www.chromium.org/getting-involved/download-chromium</a></p>
+                    </li>
+
+                </ul>
+                <p class="fs-18 c-grey">一个google帐号可同步所有信息(收藏夹，插件等)</p>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Developer Tools概述</h2>
+                <p class="c-red">Web App</p>
+                <!-- <p class="fs-18 " >chrome developer tools 共有八个面板：</p> -->
+                <ol>
+                    <li>Elements <span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; DOM节点查看，样式动态修改等 </span></li>
+                    <li>Resoures<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 列表出网站所有资源，包括了html5支持的Database, localstorage等 </span></li>
+                    <li>Network<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 查看各资源的网络加载情况，详细请求信息等 </span></li>
+                    <li>Scripts<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 脚本面板可让您调试自己的 JavaScript 代码 </span></li>
+                    <li>Timeline<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 详细分析你的网页或应用程序时间用在了何处，包括资源加载，js解析，页面渲染重绘等 </span></li>
+                    <li>Profiles<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 帮你分析网页或应用的执行时间和内存使用情况 </span></li>
+                    <li>Audits<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 类似yslow的建议分析器 </span></li>
+                    <li>Console<span class="fs-16 c-grey"> &nbsp;&nbsp;&nbsp; 强大的控制台，无须赘言 </span></li>
+                </ol>
+                <p class="fs-16 c-grey">官方参考文档：<a target="_blank" href="http://code.google.com/intl/zh-CN/chrome/devtools/docs/overview.html#access">http://code.google.com/intl/zh-CN/chrome/devtools/docs/overview.html#access</a> 
+                    <br>
+                英文原版：<a target="_blank" href="http://code.google.com/intl/en/chrome/devtools/">http://code.google.com/intl/en/chrome/devtools/</a>
+                    </p>
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+         <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">快捷键</h2>
+                <p class="fs-16" >在打开chrome developer tools情况下，按 "?" 键调出</p>
+                <p><img class="pic-effect" src="images/shortcuts.png" alt=""> </p>
+                <p class="fs-16 c-green" >比较好用常用的几个快捷键</p>
+                <ul class="s-list">
+                    <li>各面板下ESC调出console面板，方便引用当前元素</li>
+                    <li>console面板：ctrl+L，清除控制台信息</li>
+                    <li>resourse, script面板：ctrl+g，跳转行</li>
+                    <li>script面板：ctrl+o列出所有js文件，ctrl+shift+o列出当前js文件所有function,支持字符筛选</li>
+                    <li>ctrl+shift+F: 在所有js文件中搜索，支持正则，忽略大小写</li>
+                    <li>断点相关：F8暂停/继续，F10跳到下个function，F11单步进入，Shift+F11单步退出</li>
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Settings</h2>
+                
+                <p><img class="pic-effect" src="images/settings.png" alt=""> </p>
+
+                <ul class="fs-18">
+                    <li>disable cache : 禁用缓存，开发时方便调试</li>
+                    <li>Show paint rectangles : 是否显示渲染范围框</li>
+                    <li>Override User Agent : 覆盖用户代理</li>
+                    <li>Text editor : 控制格式化js时缩进规格</li>
+                    <li>......</li>
+                </ol>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Elements</h2>
+                <p class="fs-16 c-grey" ><a href="http://closure-library.googlecode.com/svn/trunk/closure/goog/demos/hovercard.html" target="_blank">google 演示网页</a></p>
+                <ul>
+                    <li><span class="">DOM面板</span> <span class="c-grey fs-16">任意节点修改删除 , F2</span></li>
+                    <li><span class="">Computed style</span> <span class="c-grey fs-16">查看最终样式计算结果</span></li>
+                    <li><span class="">Styles</span>  <span class="c-grey fs-16">实时修改style [ <img src="images/1.png" alt=""> ]，可另存</span></li>
+                    <li><span class="">Metrics</span>  <span class="c-grey fs-16">查看盒模型，可实时修改</span> </li>
+                    <li><span class="">Properties</span>  <span class="c-grey fs-16">以对象形式查看元素，包括继承的类</span></li>
+                    <li><span class="">DOM Breakpoints</span>  <span class="c-grey fs-16">设置的dom节点断点【演】</span></li>
+                    <li><span class="">Event Listeners</span>  <span class="c-grey fs-16">查看各dom节点上的事件侦听(事件代理) <a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Resource</h2>
+                <!-- <p class="fs-16 c-grey" ><a href="http://closure-library.googlecode.com/svn/trunk/closure/goog/demos/hovercard.html" target="_blank">google 演示网页</a></p> -->
+                <ul>
+                    <li><span class="">Frames</span> <span class="c-grey fs-16">列出所有资源(html, css, js, images)可进行全局搜索</span></li>
+                    <li><span class="">Databases</span> <span class="c-grey fs-16">html5本地数据库，对象本地持久化</span>
+                        <p class="fs-18"><a href="http://www.webkit.org/demos/sticky-notes/index.html" target="_blank">http://www.webkit.org/demos/sticky-notes/index.html</a>【演】 </p>
+                    </li>
+                    <li><span class="">IndexedDB</span>  <span class="c-grey fs-16"></span></li>
+                    <li><span class="">Local Storage</span>  <span class="c-grey fs-16">html5的本地存储 <a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span> </li>
+                    <li><span class="">Session Storage</span> <span class="c-grey fs-16">会话存储</span> </li>
+                    <li><span class="">Cookie</span>  <span class="c-grey fs-16">查看当前页面的cookie</span></li>
+                    <li><span class="">Application Cache</span>  <span class="c-grey fs-16">提供页面指定文件缓存【演】</span></li>
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Network &#38; Audits</h2>
+                
+                <ul>
+                    <li>HTTPRequest <span class="c-grey fs-16">查看详细的http请求信息，包括request method, headers, response headers</span></li>
+                    <li>Timeline <span class="c-grey fs-16">每条请求详细的发起，响应，接收时间，以及window loaded, content load时间线</span></li>
+                    <li>JSON preview <span class="c-grey fs-16"><a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span> </li>
+                    <li>Audits <span class="c-grey fs-16">chrome上的yslow</span>
+                        <ul class="fs-16">
+                            <li>Network Utilization</li>
+                            <li>Web Page Performance</li>
+                            <li><img class="pic-effect" src="images/2.png" alt=""></li>
+                        </ul>
+                    </li>
+                   
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Scripts</h2>
+                
+                <ul >
+                    <li>Script format <span class="c-grey fs-16"> 格式化压缩代码，让代码更可读 <img src="images/3.png" alt=""></span></li>
+                    <li>Pause on exception <span class="c-grey fs-16"> 自动在异常处断点 <img src="images/4.png" alt=""></span></li>
+                    <li>Live edit script <span class="c-grey fs-16">直接编辑js文件，ctrl+s保存，只对用户事件有效<a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                    <li>Watch Expressions <span class="c-grey fs-16">断点处任意查看变量或表达式<a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                    <li>Call Stack <span class="c-grey fs-16">查看函数的调用堆栈<a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                    <li>Scope Variables <span class="c-grey fs-16">查看局部变量，包括Local, Global, Closure <a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                    <li>Breakpoints <span class="c-grey fs-16">DOM Breakpoints, xhr Breakpoints, EventListener Breakpoints<a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span>
+                        <ul class="fs-18">
+                            <li>带表达式的Breakpoints  <img src="images/5.png" style="vertical-align:top;" alt=""></li>
+                        </ul>
+                    </li>
+                    <li>Workers <span class="c-grey fs-16">html5 多线程</span>
+                        <p class="fs-18">参考：  
+                            <a target="_blank" href="http://dev.w3.org/html5/workers/">http://dev.w3.org/html5/workers/</a> 
+                            <a style="margin-left:60px;" target="_blank" href="http://blog.csdn.net/chen123456789198808/article/details/5537121">http://blog.csdn.net/chen123456789198808/article/details/5537121</a> 
+
+                        </p></li>
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Console</h2>
+                
+                <ul >
+                    <li>Firebug Console API <span class="c-grey fs-16"> 支持firebug的命令行API</span>
+                        <ul class="fs-18">
+                            <li><a target="_blank" href="http://getfirebug.com/wiki/index.php/Console_API">http://getfirebug.com/wiki/index.php/Console_API</a></li>
+                            <li><a target="_blank" href="http://getfirebug.com/wiki/index.php/Command_Line_API">http://getfirebug.com/wiki/index.php/Command_Line_API</a></li>
+                            <li>dir(element)</li>
+                            <li>console.time('xx'), console.timeEnd('xx')  <a href="chromeTest/scriptTest.html" target="_blank">【例】</a></li>
+                            <li>$0...$n，$(id), $$(selector)</li>
+                            <li>inspect(element),  clear()</li>
+                        </ul>
+                    </li>
+                    <li>monitorEvents(element, [event]) <span class="c-grey fs-16"> 侦测节点事件 <a href="chromeTest/scriptTest.html" target="_blank">【例】</a></span></li>
+                    <li>keys(object) <span class="c-grey fs-16"> 列出对象所有的属性键名</span></li>
+                    <li>values(object) <span class="c-grey fs-16">  列出对象所有的属性值</span></li>
+                    <li>prototype原型链 <span class="c-grey fs-16">  很方便的查看对象的原型链, __proto__ 【演】</span> </li>
+                    
+                </ul>
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Timeline &#38; Profiles</h2>
+                <p><a href="chromeTest/scriptTest.html" target="_blank">【例】</a> </p>
+                <ul>
+                    <li>Timelines <span class="fs-16 c-grey">页面各个操作的时间线</span> </li>
+                    <li>Memory <span class="fs-16 c-grey">内存使用情况</span></li>
+                    <li>.............</li>
+                    <li>CPU Profiles <span class="fs-16 c-grey">显示在网页的各个 JavaScript 函数中，执行时间花在了哪些地方。</span></li>
+                    <li>CSS Selector Profiles <span class="fs-16 c-grey">显示网页要css选择器上花的时间</span></li>
+                    <li>Heap Snapshots <span class="fs-16 c-grey">按网页的 JavaScript 对象显示内存分配</span></li>
+                </ul>
+                <p class="fs-18">v8跑分：<a target="_blank" href="http://v8.googlecode.com/svn/data/benchmarks/v7/run.html">http://v8.googlecode.com/svn/data/benchmarks/v7/run.html</a></p>
+                <p>Remote debugging <br>
+                <a class="fs-18" target="_blank" href="http://code.google.com/intl/zh-CN/chrome/devtools/docs/remote-debugging.html">http://code.google.com/intl/zh-CN/chrome/devtools/docs/remote-debugging.html</a></p>
+               
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">一些视频</h2>
+               
+                <ul>
+                    <li>12 Tricks to Develop Quicker <p><a href="http://www.youtube.com/watch?v=nOEw9iiopwI" target="_blank">http://www.youtube.com/watch?v=nOEw9iiopwI</a></p> </li>
+                    <li>+Chrome Developers Hangout: Dev Tools<p><a href="http://www.youtube.com/watch?v=anSdHAFLOPM" target="_blank">http://www.youtube.com/watch?v=anSdHAFLOPM</a></p> </li>
+                    <li>Google I/O 2011: Chrome Dev Tools Reloaded<p><a href="http://www.youtube.com/watch?v=N8SS-rUEZPg" target="_blank">http://www.youtube.com/watch?v=N8SS-rUEZPg</a></p> </li>
+                    <li>Google I/O 2010 - Google Chrome's developer tools<p><a href="http://www.youtube.com/watch?v=TH7sJbyXHuk" target="_blank">http://www.youtube.com/watch?v=TH7sJbyXHuk</a></p> </li>
+                    
+                </ul>
+               
+               
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">Extensions API</h2>
+                <p>DevTools本身也是可以被扩展的(仅canary或dev版本)</p>
+                <p class="fs-18"><a href="http://code.google.com/chrome/extensions/trunk/experimental.html" target="_blank">http://code.google.com/chrome/extensions/trunk/experimental.html</a> </p>
+                <ol>
+                    <li>chrome://flags</li>
+                    <li>开启"实验性扩展程序 API"</li>
+                    <li>接下来与插件开发一致(配置manifest.json)
+                        <p class="fs-18 c-green">"permissions": [
+                          "experimental",
+                          ...
+                        ],</p></li>
+                </ol>
+
+                <p>chrome-query</p>
+                <p><img src="images/6.png" alt="" class="pic-effect"></p>
+                
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+         <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2">文档</h2>
+                
+                
+
+                <ul>
+                    <li>官方文档：
+                        <p ><a  target="_blank" href="http://code.google.com/intl/zh-CN/chrome/devtools/docs/profiles.html">http://code.google.com/intl/zh-CN/chrome/devtools/docs/profiles.html</a></p>
+                        <p ><a  target="_blank" href="http://code.google.com/intl/en/chrome/devtools/">http://code.google.com/intl/en/chrome/devtools/</a></p>
+                    </li> 
+                    <li>插件开发：
+                        <p ><a target="_blank" href="http://code.google.com/chrome/extensions/trunk/getstarted.html">http://code.google.com/chrome/extensions/trunk/getstarted.html</a></p>
+                        <p >360翻译中文版：<a  target="_blank" href="http://open.chrome.360.cn/html/dev_doc.html">http://open.chrome.360.cn/html/dev_doc.html</a></p></li>
+                    <li>
+                        <a target="_blank" href="https://github.com/borismus/DevTools-Lab/raw/master/cheatsheet/chromedev-cheatsheet.pdf">Chrome DevTools Cheat Sheet </a>
+                     </li>
+                </ul>
+                
+                
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <div class="content">
+                <h2 class="t2" style="font-style:italic;text-align:center; line-height: 500px; font-size:80px; font-family:'arial'">Thanks</h2>
+
+            </div>
+        </article>
+        <!-- /页面区 -->
+
+
+
+        
+
+    </section>
+    <div class="tips author">author: Der ( <a target="_blank" href="http://www.ueder.net" title="ueder">ueder.net</a> ) </div>
+    <button type="button" class="next handle" id="next">&gt;</button>
+
+    <!-- 幻灯片脚本 -->
+    <script src="slides.js"></script>
+    <script type="text/javascript">
+        //幻灯片
+        new Slides();
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+CACHE MANIFEST
+
+CACHE:
+slides.css
+slides.js
+*
+
+NETWORK:
+slides.html
+
+
+FALLBACK:
+
